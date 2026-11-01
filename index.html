@@ -145,33 +145,25 @@
           <div class="p-3 border-2 border-dashed border-amber-300/40 bg-black/60 rounded-xl relative h-32 flex flex-col justify-between overflow-hidden">
             <div class="flex justify-between text-[10px] text-amber-200 z-10 font-bold"><span>BTC/USD CANDLESTICK</span><span>LIVE</span></div>
             
-            <!-- Fitted SVG Candlestick Visuals -->
             <svg class="w-full h-16 z-10 px-1" viewBox="0 0 200 60" preserveAspectRatio="none">
-              <!-- Grid lines -->
               <line x1="0" y1="15" x2="200" y2="15" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
               <line x1="0" y1="45" x2="200" y2="45" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
               
-              <!-- Candle 1 (Green) -->
               <line x1="15" y1="10" x2="15" y2="50" stroke="#22c55e" stroke-width="1"/>
               <rect x="10" y="20" width="10" height="20" fill="#22c55e" rx="1"/>
 
-              <!-- Candle 2 (Red) -->
               <line x1="45" y1="15" x2="45" y2="55" stroke="#ef4444" stroke-width="1"/>
               <rect x="40" y="25" width="10" height="20" fill="#ef4444" rx="1"/>
 
-              <!-- Candle 3 (Green) -->
               <line x1="75" y1="5" x2="75" y2="40" stroke="#22c55e" stroke-width="1"/>
               <rect x="70" y="10" width="10" height="25" fill="#22c55e" rx="1"/>
 
-              <!-- Candle 4 (Green) -->
               <line x1="105" y1="2" x2="105" y2="35" stroke="#22c55e" stroke-width="1"/>
               <rect x="100" y="5" width="10" height="20" fill="#22c55e" rx="1"/>
 
-              <!-- Candle 5 (Red) -->
               <line x1="135" y1="12" x2="135" y2="48" stroke="#ef4444" stroke-width="1"/>
               <rect x="130" y="18" width="10" height="22" fill="#ef4444" rx="1"/>
 
-              <!-- Candle 6 (Green) -->
               <line x1="165" y1="8" x2="165" y2="42" stroke="#22c55e" stroke-width="1"/>
               <rect x="160" y="12" width="10" height="20" fill="#22c55e" rx="1"/>
             </svg>
@@ -237,25 +229,38 @@
       </div>
     </section>
 
-    <!-- 4. Playground (6x6 Minesweeper & Fixed Interactive Block Blast) -->
+    <!-- 4. Playground (Minesweeper 5x5 & Official Style Classic Tetris) -->
     <section id="playground" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Playground</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Minesweeper 6x6 -->
+        <!-- Minesweeper 5x5 -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl flex flex-col items-center">
-          <h3 class="font-bold text-sm text-amber-200 mb-2">💣 Minesweeper (6x6)</h3>
-          <div id="minesweeper-board" class="grid grid-cols-6 gap-1 bg-black p-2 rounded-xl border-2 border-black mb-3"></div>
-          <button onclick="initMinesweeper()" class="brutalist-btn px-3 py-1 bg-white/10 text-xs rounded">Reset Board</button>
+          <h3 class="font-bold text-sm text-amber-200 mb-2">💣 Minesweeper (5x5)</h3>
+          <div id="minesweeper-board" class="grid grid-cols-5 gap-1.5 bg-black p-3 rounded-xl border-2 border-black mb-3"></div>
+          <button onclick="initMinesweeper()" class="brutalist-btn px-4 py-1.5 bg-white/10 text-xs rounded">Reset 5x5 Board</button>
         </div>
 
-        <!-- Fully Working Interactive Block Blast (5x5 Grid) -->
+        <!-- Official Classic Tetris -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl flex flex-col items-center">
-          <h3 class="font-bold text-sm text-amber-200 mb-2">🧩 Block Blast Interactive</h3>
-          <div id="block-grid" class="grid grid-cols-5 gap-1 bg-black p-2 rounded-xl border-2 border-black mb-3"></div>
-          <div class="flex gap-2">
-            <button onclick="dropBlockPattern()" class="brutalist-btn px-4 py-1.5 bg-amber-400 text-black font-bold text-xs rounded">Drop Block Piece</button>
-            <button onclick="resetBlockBlast()" class="brutalist-btn px-3 py-1.5 bg-white/10 text-xs rounded">Reset</button>
+          <div class="flex justify-between w-full mb-2 items-center">
+            <h3 class="font-bold text-sm text-amber-200">🕹️ Official Classic Tetris</h3>
+            <span id="tetris-score" class="text-xs font-bold text-amber-300 bg-black px-2 py-1 rounded border border-white/20">SCORE: 0</span>
+          </div>
+          
+          <canvas id="tetris-canvas" width="200" height="320" class="bg-black border-2 border-black rounded-xl mb-3"></canvas>
+          
+          <!-- Touch Controls for Mobile -->
+          <div class="space-y-2 w-full max-w-[200px]">
+            <div class="flex justify-between gap-1">
+              <button onclick="tetrisMove(-1)" class="brutalist-btn flex-1 py-1 bg-white/10 text-xs font-bold rounded">◀</button>
+              <button onclick="tetrisRotate()" class="brutalist-btn flex-1 py-1 bg-amber-400 text-black text-xs font-bold rounded">🔄 PUTAR</button>
+              <button onclick="tetrisMove(1)" class="brutalist-btn flex-1 py-1 bg-white/10 text-xs font-bold rounded">▶</button>
+            </div>
+            <div class="flex gap-1">
+              <button onclick="tetrisDrop()" class="brutalist-btn flex-1 py-1 bg-green-700 text-white text-xs font-bold rounded">🔽 DROP</button>
+              <button onclick="initTetris()" class="brutalist-btn px-3 py-1 bg-red-900 text-white text-xs font-bold rounded">MULA / RESET</button>
+            </div>
           </div>
         </div>
       </div>
@@ -286,11 +291,12 @@
       </div>
     </section>
 
-    <!-- 7. Pricing Plan -->
+    <!-- 7. Pricing Plan (Kemaskini Button Select Plan -> Direct YouTube Video) -->
     <section id="pricing" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2 text-center">Pricing Plan</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Community Tier -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Community Tier</h3>
@@ -304,6 +310,7 @@
           <button class="brutalist-btn w-full py-2 bg-white text-black font-bold text-xs rounded">Get Started</button>
         </div>
 
+        <!-- Are You Okay? -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Are You Okay?</h3>
@@ -313,9 +320,10 @@
               <li>✓ Bro?</li>
             </ul>
           </div>
-          <button class="brutalist-btn w-full py-2 bg-white/10 text-xs rounded">Select Plan</button>
+          <a href="https://youtu.be/eyXKvOrDoqw?si=dm-n6cyoTgvtqDSU" target="_blank" class="brutalist-btn w-full block text-center py-2 bg-white/10 text-white font-bold text-xs rounded hover:bg-white/20">Select Plan</a>
         </div>
 
+        <!-- Pure Dumb & Stupid -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Pure Dumb & Stupid</h3>
@@ -325,7 +333,7 @@
               <li>✓ Son, you stupid!</li>
             </ul>
           </div>
-          <button class="brutalist-btn w-full py-2 bg-white/10 text-xs rounded">Select Plan</button>
+          <a href="https://youtu.be/eyXKvOrDoqw?si=dm-n6cyoTgvtqDSU" target="_blank" class="brutalist-btn w-full block text-center py-2 bg-white/10 text-white font-bold text-xs rounded hover:bg-white/20">Select Plan</a>
         </div>
       </div>
     </section>
@@ -363,7 +371,7 @@
     <p class="font-mono text-[10px] text-amber-300 mt-1 md:mt-0">Theme: #420303 Brutalism</p>
   </footer>
 
-  <!-- Scripts: Logic & Fixed Interactive Components -->
+  <!-- Scripts: Logic & Interactive Classic Tetris & 5x5 Minesweeper -->
   <script>
     // Ask BelajarAI
     async function sendAskAI() {
@@ -382,20 +390,20 @@
       box.scrollTop = box.scrollHeight;
     }
 
-    // Minesweeper 6x6
+    // 1. Minesweeper 5x5 Grid Exact
     function initMinesweeper() {
       const board = document.getElementById('minesweeper-board');
       board.innerHTML = '';
-      for (let i = 0; i < 36; i++) {
+      for (let i = 0; i < 25; i++) {
         const btn = document.createElement('button');
-        btn.className = 'w-8 h-8 bg-white/10 hover:bg-white/20 rounded text-xs font-bold border border-black';
+        btn.className = 'w-10 h-10 bg-white/10 hover:bg-white/20 rounded text-sm font-bold border border-black transition-colors';
         btn.onclick = () => {
           if (Math.random() < 0.2) {
             btn.innerText = '💣';
-            btn.className = 'w-8 h-8 bg-red-800 rounded text-xs border border-black';
+            btn.className = 'w-10 h-10 bg-red-800 rounded text-sm border border-black';
           } else {
             btn.innerText = '✨';
-            btn.className = 'w-8 h-8 bg-green-900 rounded text-xs border border-black';
+            btn.className = 'w-10 h-10 bg-green-900 rounded text-sm border border-black';
           }
         };
         board.appendChild(btn);
@@ -403,38 +411,152 @@
     }
     initMinesweeper();
 
-    // 100% Working Interactive Block Blast Grid (5x5)
-    function initBlockBlast() {
-      const grid = document.getElementById('block-grid');
-      grid.innerHTML = '';
-      for (let i = 0; i < 25; i++) {
-        const cell = document.createElement('div');
-        cell.id = `cell-${i}`;
-        cell.className = 'w-8 h-8 bg-white/10 rounded border border-black transition-colors';
-        grid.appendChild(cell);
-      }
-    }
-    initBlockBlast();
+    // 2. Official Classic Tetris Game Logic (10x16 Grid)
+    const tCanvas = document.getElementById('tetris-canvas');
+    const tCtx = tCanvas.getContext('2d');
+    const COLS = 10, ROWS = 16, BLOCK_SIZE = 20;
+    let tBoard = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+    let tScore = 0, tTimer = null;
 
-    function dropBlockPattern() {
-      const emptyCells = [];
-      for (let i = 0; i < 25; i++) {
-        const c = document.getElementById(`cell-${i}`);
-        if (!c.classList.contains('bg-amber-400')) emptyCells.push(i);
-      }
-      if (emptyCells.length === 0) {
-        alert('Grid Penuh! Block Blast Reset.');
-        initBlockBlast();
-        return;
-      }
-      // Fill 2-3 random cells as block drop
-      for (let k = 0; k < Math.min(3, emptyCells.length); k++) {
-        const randIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        const target = document.getElementById(`cell-${randIndex}`);
-        target.className = 'w-8 h-8 bg-amber-400 rounded border border-black';
+    const TETROMINOES = [
+      { shape: [[1, 1, 1, 1]], color: '#00f0f0' }, // I
+      { shape: [[1, 1, 1], [0, 1, 0]], color: '#a000f0' }, // T
+      { shape: [[1, 1, 1], [1, 0, 0]], color: '#f0a000' }, // L
+      { shape: [[1, 1, 1], [0, 0, 1]], color: '#0000f0' }, // J
+      { shape: [[1, 1], [1, 1]], color: '#f0f000' }, // O
+      { shape: [[0, 1, 1], [1, 1, 0]], color: '#00f000' }, // S
+      { shape: [[1, 1, 0], [0, 1, 1]], color: '#f00000' }  // Z
+    ];
+
+    let currentPiece = null;
+
+    function spawnTetromino() {
+      const rand = TETROMINOES[Math.floor(Math.random() * TETROMINOES.length)];
+      currentPiece = {
+        shape: rand.shape,
+        color: rand.color,
+        x: Math.floor(COLS / 2) - Math.floor(rand.shape[0].length / 2),
+        y: 0
+      };
+      if (checkCollision(currentPiece.x, currentPiece.y, currentPiece.shape)) {
+        clearInterval(tTimer);
+        alert(`GAME OVER! Final Score: ${tScore}`);
+        initTetris();
       }
     }
-    function resetBlockBlast() { initBlockBlast(); }
+
+    function checkCollision(x, y, shape) {
+      for (let r = 0; r < shape.length; r++) {
+        for (let c = 0; c < shape[r].length; c++) {
+          if (shape[r][c]) {
+            let newX = x + c;
+            let newY = y + r;
+            if (newX < 0 || newX >= COLS || newY >= ROWS) return true;
+            if (newY >= 0 && tBoard[newY][newX]) return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function mergePiece() {
+      for (let r = 0; r < currentPiece.shape.length; r++) {
+        for (let c = 0; c < currentPiece.shape[r].length; c++) {
+          if (currentPiece.shape[r][c]) {
+            tBoard[currentPiece.y + r][currentPiece.x + c] = currentPiece.color;
+          }
+        }
+      }
+      clearRows();
+      spawnTetromino();
+    }
+
+    function clearRows() {
+      for (let r = ROWS - 1; r >= 0; r--) {
+        if (tBoard[r].every(cell => cell !== 0)) {
+          tBoard.splice(r, 1);
+          tBoard.unshift(Array(COLS).fill(0));
+          tScore += 100;
+          document.getElementById('tetris-score').innerText = `SCORE: ${tScore}`;
+          r++;
+        }
+      }
+    }
+
+    function drawTetris() {
+      tCtx.fillStyle = '#000';
+      tCtx.fillRect(0, 0, tCanvas.width, tCanvas.height);
+
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (tBoard[r][c]) {
+            tCtx.fillStyle = tBoard[r][c];
+            tCtx.fillRect(c * BLOCK_SIZE, r * BLOCK_SIZE, BLOCK_SIZE - 1, BLOCK_SIZE - 1);
+          }
+        }
+      }
+
+      if (currentPiece) {
+        tCtx.fillStyle = currentPiece.color;
+        for (let r = 0; r < currentPiece.shape.length; r++) {
+          for (let c = 0; c < currentPiece.shape[r].length; c++) {
+            if (currentPiece.shape[r][c]) {
+              tCtx.fillRect((currentPiece.x + c) * BLOCK_SIZE, (currentPiece.y + r) * BLOCK_SIZE, BLOCK_SIZE - 1, BLOCK_SIZE - 1);
+            }
+          }
+        }
+      }
+    }
+
+    function updateTetris() {
+      if (!checkCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+        currentPiece.y++;
+      } else {
+        mergePiece();
+      }
+      drawTetris();
+    }
+
+    function tetrisMove(dir) {
+      if (!checkCollision(currentPiece.x + dir, currentPiece.y, currentPiece.shape)) {
+        currentPiece.x += dir;
+        drawTetris();
+      }
+    }
+
+    function tetrisRotate() {
+      const rotated = currentPiece.shape[0].map((_, i) => currentPiece.shape.map(row => row[i]).reverse());
+      if (!checkCollision(currentPiece.x, currentPiece.y, rotated)) {
+        currentPiece.shape = rotated;
+        drawTetris();
+      }
+    }
+
+    function tetrisDrop() {
+      while (!checkCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+        currentPiece.y++;
+      }
+      mergePiece();
+      drawTetris();
+    }
+
+    function initTetris() {
+      clearInterval(tTimer);
+      tBoard = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      tScore = 0;
+      document.getElementById('tetris-score').innerText = 'SCORE: 0';
+      spawnTetromino();
+      drawTetris();
+      tTimer = setInterval(updateTetris, 500);
+    }
+    initTetris();
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') tetrisMove(-1);
+      if (e.key === 'ArrowRight') tetrisMove(1);
+      if (e.key === 'ArrowUp') tetrisRotate();
+      if (e.key === 'ArrowDown') tetrisDrop();
+    });
 
     // Stopwatch
     let timer, sec = 0;
