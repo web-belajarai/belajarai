@@ -168,7 +168,7 @@
             </svg>
 
             <div class="flex justify-between text-[10px] text-gray-300 z-10 font-bold">
-              <span>Day 5</span><span>Day 4</span><span>Day 3</span><span>Day 2</span><span>Today </span>
+              <span>5d</span><span>4d</span><span>3d</span><span>2d</span><span>Today </span>
             </div>
           </div>
         </div>
@@ -285,7 +285,7 @@
     <section id="ask-ai" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-4">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Ask Belajar AI</h2>
       <div id="ai-chat-box" class="h-48 overflow-y-auto space-y-3 p-3 bg-black/50 border-2 border-black rounded-xl text-xs">
-        <div class="text-amber-200 italic">Sistem LLM terbuka sedia menjawab pertanyaan anda tanpa log masuk...</div>
+        <div class="text-amber-200 italic">BelajarAI sedia menjawab pertanyaan anda</div>
       </div>
       <div class="flex gap-2">
         <input type="text" id="ai-input" placeholder="Taip soalan..." class="flex-grow p-2.5 brutalist-input rounded-xl text-xs">
@@ -736,7 +736,7 @@
       if (chatActive) return;
       chatActive = true;
       const box = document.getElementById('group-chat-box');
-      box.innerHTML = '<div class="text-amber-300">Sistem Group Chat bermula (Delay 50 saat setiap mesej)...</div>';
+      box.innerHTML = '<div class="text-amber-300">Sistem Group Chat bermula (50 saat setiap mesej)...</div>';
       const actors = [
         {name: 'Goblin 👺', prompt: 'Say 1 funny short sentence about hoarding gold.'},
         {name: 'Cyborg 🤖', prompt: 'Say 1 logical short sentence about system upgrade.'},
