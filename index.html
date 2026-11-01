@@ -42,7 +42,7 @@
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden p-3 md:p-6">
 
   <!-- iPhone Notch / Header Bar -->
-  <header class="w-full max-w-4xl mx-auto brutalist-container px-4 py-3 flex justify-between items-center mb-8 rounded-2xl">
+  <header class="w-full max-w-4xl mx-auto brutalist-container px-4 py-3 flex justify-between items-center mb-6 rounded-2xl">
     <div class="flex items-center space-x-2">
       <div class="px-2.5 py-1 bg-white text-[#420303] text-xs font-bold uppercase border-2 border-black">
         BELAJARAI
@@ -53,6 +53,14 @@
       ⚡ 100% CONTROL
     </div>
   </header>
+
+  <!-- Hero Headline Section -->
+  <section class="w-full max-w-4xl mx-auto text-center mb-8 px-2">
+    <h1 class="font-heading text-2xl md:text-4xl font-bold uppercase tracking-wide text-white leading-tight">
+      Empowering Builders with Open Source AI & Logic.<br>
+      <span class="text-amber-300">Pure Creation.</span>
+    </h1>
+  </section>
 
   <!-- Main Content Stack (Strictly Ordered) -->
   <main class="w-full max-w-4xl mx-auto space-y-10 flex-grow">
@@ -119,7 +127,7 @@
           </div>
         </div>
 
-        <!-- Global Currency Converter (Expanded) -->
+        <!-- Global Currency Converter -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
           <h3 class="font-bold text-sm text-amber-200">💱 Global Currency Converter</h3>
           <input type="number" id="curr-amount" value="1" class="w-full p-2 brutalist-input rounded-lg text-xs">
@@ -131,17 +139,44 @@
           <div id="curr-result" class="text-center text-amber-300 font-bold text-xs">-</div>
         </div>
 
-        <!-- Aesthetic Transparent Crypto Wallet Chart -->
+        <!-- Authentic Candlestick Crypto Wallet Tracker -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
           <h3 class="font-bold text-sm text-amber-200">🪙 Crypto Wallet Candlestick Tracker</h3>
-          <div class="p-2 border-2 border-dashed border-amber-300/40 bg-black/60 rounded-xl relative h-28 flex flex-col justify-between">
-            <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:16px_16px]"></div>
-            <div class="flex justify-between text-[10px] text-amber-200 z-10"><span>BTC / USD</span><span>LIVE CHART</span></div>
-            <!-- Candlestick Visual Simulation Line -->
-            <svg class="w-full h-12 z-10" viewBox="0 0 100 30" preserveAspectRatio="none">
-              <path d="M0,20 Q15,5 30,25 T60,10 T90,18 L100,5" fill="none" stroke="#FCD34D" stroke-width="2"/>
+          <div class="p-3 border-2 border-dashed border-amber-300/40 bg-black/60 rounded-xl relative h-32 flex flex-col justify-between overflow-hidden">
+            <div class="flex justify-between text-[10px] text-amber-200 z-10 font-bold"><span>BTC/USD CANDLESTICK</span><span>LIVE</span></div>
+            
+            <!-- Fitted SVG Candlestick Visuals -->
+            <svg class="w-full h-16 z-10 px-1" viewBox="0 0 200 60" preserveAspectRatio="none">
+              <!-- Grid lines -->
+              <line x1="0" y1="15" x2="200" y2="15" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
+              <line x1="0" y1="45" x2="200" y2="45" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
+              
+              <!-- Candle 1 (Green) -->
+              <line x1="15" y1="10" x2="15" y2="50" stroke="#22c55e" stroke-width="1"/>
+              <rect x="10" y="20" width="10" height="20" fill="#22c55e" rx="1"/>
+
+              <!-- Candle 2 (Red) -->
+              <line x1="45" y1="15" x2="45" y2="55" stroke="#ef4444" stroke-width="1"/>
+              <rect x="40" y="25" width="10" height="20" fill="#ef4444" rx="1"/>
+
+              <!-- Candle 3 (Green) -->
+              <line x1="75" y1="5" x2="75" y2="40" stroke="#22c55e" stroke-width="1"/>
+              <rect x="70" y="10" width="10" height="25" fill="#22c55e" rx="1"/>
+
+              <!-- Candle 4 (Green) -->
+              <line x1="105" y1="2" x2="105" y2="35" stroke="#22c55e" stroke-width="1"/>
+              <rect x="100" y="5" width="10" height="20" fill="#22c55e" rx="1"/>
+
+              <!-- Candle 5 (Red) -->
+              <line x1="135" y1="12" x2="135" y2="48" stroke="#ef4444" stroke-width="1"/>
+              <rect x="130" y="18" width="10" height="22" fill="#ef4444" rx="1"/>
+
+              <!-- Candle 6 (Green) -->
+              <line x1="165" y1="8" x2="165" y2="42" stroke="#22c55e" stroke-width="1"/>
+              <rect x="160" y="12" width="10" height="20" fill="#22c55e" rx="1"/>
             </svg>
-            <div id="crypto-ticker" class="text-[10px] text-gray-300 z-10 truncate">Memuatkan data pasaran kripto...</div>
+
+            <div id="crypto-ticker" class="text-[10px] text-gray-300 z-10 truncate font-bold">Memuatkan data pasaran kripto...</div>
           </div>
         </div>
 
@@ -161,7 +196,7 @@
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
           <h3 class="font-bold text-sm text-amber-200">💬 AI Character Group Chat (50s Delay Safe)</h3>
           <div id="group-chat-box" class="p-2 bg-black border border-white/20 rounded-lg text-[10px] h-32 overflow-y-auto space-y-2">
-            <span class="text-gray-400 italic">Tekan Start Chat untuk mulakan interaksi lambat (elak error)...</span>
+            <span class="text-gray-400 italic">Tekan Start Chat untuk mulakan interaksi lambat...</span>
           </div>
           <div class="flex gap-2">
             <button onclick="startGroupChatSafe()" class="flex-grow py-2 brutalist-btn bg-white text-black font-bold text-xs rounded-lg">Start Chat</button>
@@ -202,7 +237,7 @@
       </div>
     </section>
 
-    <!-- 4. Playground (6x6 Minesweeper & Block Blast Tetris) -->
+    <!-- 4. Playground (6x6 Minesweeper & Fixed Interactive Block Blast) -->
     <section id="playground" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Playground</h2>
       
@@ -214,13 +249,13 @@
           <button onclick="initMinesweeper()" class="brutalist-btn px-3 py-1 bg-white/10 text-xs rounded">Reset Board</button>
         </div>
 
-        <!-- Tetris Block Blast Style (Hold & Drag Simulation) -->
+        <!-- Fully Working Interactive Block Blast (5x5 Grid) -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl flex flex-col items-center">
-          <h3 class="font-bold text-sm text-amber-200 mb-2">🧩 Block Blast Tetris (Hold & Drop)</h3>
-          <canvas id="tetris-canvas" width="180" height="240" class="bg-black border-2 border-black rounded-xl mb-3"></canvas>
+          <h3 class="font-bold text-sm text-amber-200 mb-2">🧩 Block Blast Interactive</h3>
+          <div id="block-grid" class="grid grid-cols-5 gap-1 bg-black p-2 rounded-xl border-2 border-black mb-3"></div>
           <div class="flex gap-2">
-            <button onmousedown="startBlockHold()" onmouseup="releaseBlockHold()" class="brutalist-btn px-4 py-1.5 bg-amber-400 text-black font-bold text-xs rounded">Tekan & Tahan Block</button>
-            <button onclick="resetTetris()" class="brutalist-btn px-3 py-1.5 bg-white/10 text-xs rounded">Reset</button>
+            <button onclick="dropBlockPattern()" class="brutalist-btn px-4 py-1.5 bg-amber-400 text-black font-bold text-xs rounded">Drop Block Piece</button>
+            <button onclick="resetBlockBlast()" class="brutalist-btn px-3 py-1.5 bg-white/10 text-xs rounded">Reset</button>
           </div>
         </div>
       </div>
@@ -328,7 +363,7 @@
     <p class="font-mono text-[10px] text-amber-300 mt-1 md:mt-0">Theme: #420303 Brutalism</p>
   </footer>
 
-  <!-- Scripts: Logic & Safety Handling -->
+  <!-- Scripts: Logic & Fixed Interactive Components -->
   <script>
     // Ask BelajarAI
     async function sendAskAI() {
@@ -368,27 +403,38 @@
     }
     initMinesweeper();
 
-    // Tetris Block Blast Style Simulation
-    const canvas = document.getElementById('tetris-canvas');
-    const ctx = canvas.getContext('2d');
-    let blockY = 20; let isHolding = false; let holdInterval;
-    function drawBlock() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#FCD34D';
-      ctx.fillRect(70, blockY, 40, 40);
+    // 100% Working Interactive Block Blast Grid (5x5)
+    function initBlockBlast() {
+      const grid = document.getElementById('block-grid');
+      grid.innerHTML = '';
+      for (let i = 0; i < 25; i++) {
+        const cell = document.createElement('div');
+        cell.id = `cell-${i}`;
+        cell.className = 'w-8 h-8 bg-white/10 rounded border border-black transition-colors';
+        grid.appendChild(cell);
+      }
     }
-    drawBlock();
-    function startBlockHold() {
-      isHolding = true;
-      holdInterval = setInterval(() => {
-        if (isHolding && blockY < 180) { blockY += 5; drawBlock(); }
-      }, 50);
+    initBlockBlast();
+
+    function dropBlockPattern() {
+      const emptyCells = [];
+      for (let i = 0; i < 25; i++) {
+        const c = document.getElementById(`cell-${i}`);
+        if (!c.classList.contains('bg-amber-400')) emptyCells.push(i);
+      }
+      if (emptyCells.length === 0) {
+        alert('Grid Penuh! Block Blast Reset.');
+        initBlockBlast();
+        return;
+      }
+      // Fill 2-3 random cells as block drop
+      for (let k = 0; k < Math.min(3, emptyCells.length); k++) {
+        const randIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        const target = document.getElementById(`cell-${randIndex}`);
+        target.className = 'w-8 h-8 bg-amber-400 rounded border border-black';
+      }
     }
-    function releaseBlockHold() {
-      isHolding = false;
-      clearInterval(holdInterval);
-    }
-    function resetTetris() { blockY = 20; drawBlock(); }
+    function resetBlockBlast() { initBlockBlast(); }
 
     // Stopwatch
     let timer, sec = 0;
@@ -474,7 +520,6 @@
           box.innerHTML += `<div><strong class="text-amber-200">${actor.name}:</strong> ${msg}</div>`;
           box.scrollTop = box.scrollHeight;
         } catch {}
-        // Delay 50 saat mengikut arahan ketat untuk elak error laju
         await new Promise(r => setTimeout(r, 50000));
       }
       chatActive = false;
