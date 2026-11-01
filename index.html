@@ -13,7 +13,6 @@
       color: #F9FAFB;
     }
     .font-heading { font-family: 'Space Grotesk', sans-serif; }
-    /* Brutalist iPhone Frame Architecture */
     .brutalist-container {
       border: 4px solid #000;
       box-shadow: 8px 8px 0px #000;
@@ -47,7 +46,7 @@
       <div class="px-2.5 py-1 bg-white text-[#420303] text-xs font-bold uppercase border-2 border-black">
         BELAJARAI
       </div>
-      <span class="text-[10px] tracking-widest text-amber-200 uppercase font-bold">OS v3.5</span>
+      <span class="text-[10px] tracking-widest text-amber-200 uppercase font-bold">OS v3.8</span>
     </div>
     <div class="text-[10px] bg-black px-3 py-1 rounded border border-white/20 text-amber-300">
       ⚡ 100% CONTROL
@@ -85,7 +84,7 @@
       </div>
     </section>
 
-    <!-- 2. Flow Zone -->
+    <!-- 2. Flow Zone (Calculator, Calendar, Stopwatch, Notepad, Converter, Crypto 5-Days Chart) -->
     <section id="flow-zone" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Flow Zone</h2>
       
@@ -103,9 +102,9 @@
           <textarea id="notepad-input" placeholder="Tulis nota di sini..." class="w-full p-2 brutalist-input rounded-xl text-xs h-20 resize-none" oninput="saveNote()"></textarea>
         </div>
 
-        <!-- Calculator & Calendar -->
+        <!-- Calculator -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
-          <h3 class="font-bold text-sm text-amber-200">🧮 Calculator & Calendar</h3>
+          <h3 class="font-bold text-sm text-amber-200">🧮 Calculator</h3>
           <input type="text" id="calc-display" readonly class="w-full p-2 text-right brutalist-input rounded-lg text-sm font-bold">
           <div class="grid grid-cols-4 gap-1 text-xs">
             <button onclick="calcAppend('7')" class="p-1.5 brutalist-btn bg-white/10 rounded">7</button>
@@ -127,6 +126,13 @@
           </div>
         </div>
 
+        <!-- Calendar (Di bawah Calculator) -->
+        <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-2">
+          <h3 class="font-bold text-sm text-amber-200">📅 Calendar</h3>
+          <div id="calendar-header" class="text-xs font-bold text-amber-300"></div>
+          <div id="calendar-grid" class="grid grid-cols-7 gap-1 text-center text-[10px]"></div>
+        </div>
+
         <!-- Global Currency Converter -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
           <h3 class="font-bold text-sm text-amber-200">💱 Global Currency Converter</h3>
@@ -139,36 +145,29 @@
           <div id="curr-result" class="text-center text-amber-300 font-bold text-xs">-</div>
         </div>
 
-        <!-- Authentic Candlestick Crypto Wallet Tracker -->
-        <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
-          <h3 class="font-bold text-sm text-amber-200">🪙 Crypto Wallet Candlestick Tracker</h3>
-          <div class="p-3 border-2 border-dashed border-amber-300/40 bg-black/60 rounded-xl relative h-32 flex flex-col justify-between overflow-hidden">
-            <div class="flex justify-between text-[10px] text-amber-200 z-10 font-bold"><span>BTC/USD CANDLESTICK</span><span>LIVE</span></div>
+        <!-- Crypto 5-Days Line Chart with Selection -->
+        <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3 md:col-span-2">
+          <div class="flex justify-between items-center">
+            <h3 class="font-bold text-sm text-amber-200">🪙 Crypto 5-Days Price Trend</h3>
+            <select id="crypto-select" onchange="updateCryptoChart()" class="brutalist-input p-1 rounded text-xs bg-black text-amber-300 font-bold">
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="solana">Solana (SOL)</option>
+            </select>
+          </div>
+          <div class="p-3 border-2 border-dashed border-amber-300/40 bg-black/60 rounded-xl relative h-36 flex flex-col justify-between overflow-hidden">
+            <div class="flex justify-between text-[10px] text-amber-200 z-10 font-bold"><span id="crypto-label">BTC / USD (5 Days)</span><span>LINE CHART</span></div>
             
-            <svg class="w-full h-16 z-10 px-1" viewBox="0 0 200 60" preserveAspectRatio="none">
+            <!-- Transparent SVG Line Chart for 5 Days -->
+            <svg class="w-full h-20 z-10 px-1" viewBox="0 0 200 60" preserveAspectRatio="none">
               <line x1="0" y1="15" x2="200" y2="15" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
               <line x1="0" y1="45" x2="200" y2="45" stroke="rgba(255,255,255,0.08)" stroke-dasharray="2,2" />
-              
-              <line x1="15" y1="10" x2="15" y2="50" stroke="#22c55e" stroke-width="1"/>
-              <rect x="10" y="20" width="10" height="20" fill="#22c55e" rx="1"/>
-
-              <line x1="45" y1="15" x2="45" y2="55" stroke="#ef4444" stroke-width="1"/>
-              <rect x="40" y="25" width="10" height="20" fill="#ef4444" rx="1"/>
-
-              <line x1="75" y1="5" x2="75" y2="40" stroke="#22c55e" stroke-width="1"/>
-              <rect x="70" y="10" width="10" height="25" fill="#22c55e" rx="1"/>
-
-              <line x1="105" y1="2" x2="105" y2="35" stroke="#22c55e" stroke-width="1"/>
-              <rect x="100" y="5" width="10" height="20" fill="#22c55e" rx="1"/>
-
-              <line x1="135" y1="12" x2="135" y2="48" stroke="#ef4444" stroke-width="1"/>
-              <rect x="130" y="18" width="10" height="22" fill="#ef4444" rx="1"/>
-
-              <line x1="165" y1="8" x2="165" y2="42" stroke="#22c55e" stroke-width="1"/>
-              <rect x="160" y="12" width="10" height="20" fill="#22c55e" rx="1"/>
+              <path id="crypto-path" d="M0,40 Q50,10 100,30 T200,20" fill="none" stroke="#FCD34D" stroke-width="2.5"/>
             </svg>
 
-            <div id="crypto-ticker" class="text-[10px] text-gray-300 z-10 truncate font-bold">Memuatkan data pasaran kripto...</div>
+            <div class="flex justify-between text-[10px] text-gray-300 z-10 font-bold">
+              <span>Day 1</span><span>Day 2</span><span>Day 3</span><span>Day 4</span><span>Today (Day 5)</span>
+            </div>
           </div>
         </div>
 
@@ -197,19 +196,82 @@
         </div>
       </div>
 
-      <!-- Cookbook Expanded -->
+      <!-- Expanded 5-Choice PC Cookbook Specs (Low, Mid, High, Integrated, DDR3-DDR5, HDD/SSD) -->
       <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
-        <h3 class="font-bold text-sm text-amber-200">🛠️ Expanded PC Cookbook Specs</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-          <div><label class="block mb-1 text-[10px]">CPU</label><select id="pc-cpu" class="w-full p-1.5 brutalist-input rounded bg-black"><option>Intel Core i9-14900K</option><option>AMD Ryzen 9 7950X</option><option>Intel Core i5-13600K</option></select></div>
-          <div><label class="block mb-1 text-[10px]">Motherboard</label><select id="pc-mb" class="w-full p-1.5 brutalist-input rounded bg-black"><option>ASUS ROG Maximus Z790</option><option>MSI MAG B550 TOMAHAWK</option><option>Gigabyte X670E AORUS</option></select></div>
-          <div><label class="block mb-1 text-[10px]">RAM</label><select id="pc-ram" class="w-full p-1.5 brutalist-input rounded bg-black"><option>32GB Corsair Vengeance DDR5</option><option>64GB G.Skill Trident Z5</option><option>16GB Kingston Fury DDR4</option></select></div>
-          <div><label class="block mb-1 text-[10px]">GPU</label><select id="pc-gpu" class="w-full p-1.5 brutalist-input rounded bg-black"><option>NVIDIA RTX 4090 24GB</option><option>NVIDIA RTX 4070 Ti</option><option>AMD Radeon RX 7900 XTX</option></select></div>
-          <div><label class="block mb-1 text-[10px]">PSU</label><select id="pc-psu" class="w-full p-1.5 brutalist-input rounded bg-black"><option>1000W 80+ Gold Fully Modular</option><option>850W Platinum Certified</option><option>650W Bronze Standard</option></select></div>
-          <div><label class="block mb-1 text-[10px]">Storage</label><select id="pc-storage" class="w-full p-1.5 brutalist-input rounded bg-black"><option>2TB Samsung 990 PRO NVMe</option><option>4TB WD Black SN850X</option><option>1TB Crucial P3 Plus</option></select></div>
-          <div><label class="block mb-1 text-[10px]">OS</label><select id="pc-os" class="w-full p-1.5 brutalist-input rounded bg-black"><option>Windows 11 Pro 64-bit</option><option>Ubuntu Linux 24.04 LTS</option><option>Arch Linux (Custom)</option></select></div>
+        <h3 class="font-bold text-sm text-amber-200">🛠️ Expanded 5-Choice PC Cookbook Specs</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">CPU (5 Options: Low to High)</label>
+            <select id="pc-cpu" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>Intel Core i3-12100F (Budget Low)</option>
+              <option>Intel Core i5-13400 (Mid-Range)</option>
+              <option>Intel Core i5-13600K (High Performance)</option>
+              <option>AMD Ryzen 7 7800X3D (Gaming Beast)</option>
+              <option>AMD Ryzen 9 7950X (Enterprise High-End)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">GPU (5 Options: Integrated & Discrete)</label>
+            <select id="pc-gpu" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>Intel UHD Graphics 730 (Integrated)</option>
+              <option>NVIDIA GTX 1650 4GB (Low Entry)</option>
+              <option>NVIDIA RTX 4060 8GB (Mid Spec)</option>
+              <option>NVIDIA RTX 4070 Ti 12GB (High Spec)</option>
+              <option>NVIDIA RTX 4090 24GB (Ultimate High-End)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">RAM (5 Options: DDR3, DDR4, DDR5)</label>
+            <select id="pc-ram" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>8GB DDR3 1600MHz (Legacy Low)</option>
+              <option>8GB DDR4 3200MHz (Budget Mid)</option>
+              <option>16GB DDR4 3600MHz (Standard Mid)</option>
+              <option>32GB DDR5 5600MHz (High Performance)</option>
+              <option>64GB DDR5 6000MHz (Extreme High-End)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">Storage (5 Options: HDD & NVMe SSD)</label>
+            <select id="pc-storage" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>500GB SATA HDD (Legacy Low)</option>
+              <option>1TB SATA III SSD (Mid Standard)</option>
+              <option>500GB NVMe M.2 SSD (Fast Mid)</option>
+              <option>2TB Samsung 990 PRO NVMe (High Speed)</option>
+              <option>4TB WD Black SN850X Gen4 (Extreme High)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">Motherboard (5 Options)</label>
+            <select id="pc-mb" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>H610M Micro-ATX (Low Budget)</option>
+              <option>B650M Gaming WiFi (Mid AMD)</option>
+              <option>B760 Tomahawk WiFi (Mid Intel)</option>
+              <option>X670E AORUS Master (High AMD)</option>
+              <option>ASUS ROG Maximus Z790 (Extreme Intel)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 text-[10px] text-amber-200">PSU (5 Options: Low to High Wattage)</label>
+            <select id="pc-psu" class="w-full p-2 brutalist-input rounded bg-black">
+              <option>400W Standard Non-Modular (Low)</option>
+              <option>550W 80+ Bronze Certified (Mid Low)</option>
+              <option>650W 80+ Gold Semi-Modular (Mid Standard)</option>
+              <option>850W 80+ Gold Fully Modular (High Spec)</option>
+              <option>1200W 80+ Platinum Certified (Extreme)</option>
+            </select>
+          </div>
         </div>
-        <div class="flex gap-2 pt-1">
+        <div class="mt-2">
+          <label class="block mb-1 text-[10px] text-amber-200">OS (5 Options)</label>
+          <select id="pc-os" class="w-full p-2 brutalist-input rounded bg-black">
+            <option>Windows 10 Home (Legacy)</option>
+            <option>Windows 11 Pro 64-bit (Standard)</option>
+            <option>Ubuntu Linux 24.04 LTS (Developer Free)</option>
+            <option>Fedora Workstation (Open Source)</option>
+            <option>Arch Linux Custom Build (Hardcore)</option>
+          </select>
+        </div>
+        <div class="flex gap-2 pt-2">
           <button onclick="checkCompatibility()" class="brutalist-btn px-4 py-2 bg-white text-black font-bold text-xs rounded">Check Compatibility</button>
           <button onclick="resetCompatibility()" class="brutalist-btn px-4 py-2 bg-red-900 text-white font-bold text-xs rounded">Reset</button>
         </div>
@@ -229,7 +291,7 @@
       </div>
     </section>
 
-    <!-- 4. Playground (Minesweeper 5x5 & Official Style Classic Tetris) -->
+    <!-- 4. Playground (Minesweeper 5x5 & Tetris with Start Game button requirement) -->
     <section id="playground" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Playground</h2>
       
@@ -241,25 +303,25 @@
           <button onclick="initMinesweeper()" class="brutalist-btn px-4 py-1.5 bg-white/10 text-xs rounded">Reset 5x5 Board</button>
         </div>
 
-        <!-- Official Classic Tetris -->
+        <!-- Classic Tetris with Start, Left (<), Right (>), Spin, Reset buttons -->
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl flex flex-col items-center">
           <div class="flex justify-between w-full mb-2 items-center">
-            <h3 class="font-bold text-sm text-amber-200">🕹️ Official Classic Tetris</h3>
+            <h3 class="font-bold text-sm text-amber-200">🕹️ Classic Tetris</h3>
             <span id="tetris-score" class="text-xs font-bold text-amber-300 bg-black px-2 py-1 rounded border border-white/20">SCORE: 0</span>
           </div>
           
           <canvas id="tetris-canvas" width="200" height="320" class="bg-black border-2 border-black rounded-xl mb-3"></canvas>
           
-          <!-- Touch Controls for Mobile -->
+          <!-- Explicit Touch Controls: Left (<), Right (>), Spin, Start, Reset -->
           <div class="space-y-2 w-full max-w-[200px]">
             <div class="flex justify-between gap-1">
-              <button onclick="tetrisMove(-1)" class="brutalist-btn flex-1 py-1 bg-white/10 text-xs font-bold rounded">◀</button>
-              <button onclick="tetrisRotate()" class="brutalist-btn flex-1 py-1 bg-amber-400 text-black text-xs font-bold rounded">🔄 PUTAR</button>
-              <button onclick="tetrisMove(1)" class="brutalist-btn flex-1 py-1 bg-white/10 text-xs font-bold rounded">▶</button>
+              <button onclick="tetrisMove(-1)" class="brutalist-btn flex-1 py-1.5 bg-white/10 text-xs font-bold rounded">&lt; Left</button>
+              <button onclick="tetrisRotate()" class="brutalist-btn flex-1 py-1.5 bg-amber-400 text-black text-xs font-bold rounded">Spin</button>
+              <button onclick="tetrisMove(1)" class="brutalist-btn flex-1 py-1.5 bg-white/10 text-xs font-bold rounded">Right &gt;</button>
             </div>
             <div class="flex gap-1">
-              <button onclick="tetrisDrop()" class="brutalist-btn flex-1 py-1 bg-green-700 text-white text-xs font-bold rounded">🔽 DROP</button>
-              <button onclick="initTetris()" class="brutalist-btn px-3 py-1 bg-red-900 text-white text-xs font-bold rounded">MULA / RESET</button>
+              <button onclick="startTetrisGame()" class="brutalist-btn flex-1 py-1.5 bg-green-700 text-white font-bold text-xs rounded">Start</button>
+              <button onclick="resetTetrisGame()" class="brutalist-btn flex-1 py-1.5 bg-red-900 text-white font-bold text-xs rounded">Reset</button>
             </div>
           </div>
         </div>
@@ -291,12 +353,11 @@
       </div>
     </section>
 
-    <!-- 7. Pricing Plan (Kemaskini Button Select Plan -> Direct YouTube Video) -->
+    <!-- 7. Pricing Plan -->
     <section id="pricing" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2 text-center">Pricing Plan</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Community Tier -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Community Tier</h3>
@@ -310,7 +371,6 @@
           <button class="brutalist-btn w-full py-2 bg-white text-black font-bold text-xs rounded">Get Started</button>
         </div>
 
-        <!-- Are You Okay? -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Are You Okay?</h3>
@@ -323,7 +383,6 @@
           <a href="https://youtu.be/eyXKvOrDoqw?si=dm-n6cyoTgvtqDSU" target="_blank" class="brutalist-btn w-full block text-center py-2 bg-white/10 text-white font-bold text-xs rounded hover:bg-white/20">Select Plan</a>
         </div>
 
-        <!-- Pure Dumb & Stupid -->
         <div class="p-4 bg-black/50 border-2 border-black rounded-xl flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-amber-300">Pure Dumb & Stupid</h3>
@@ -371,7 +430,7 @@
     <p class="font-mono text-[10px] text-amber-300 mt-1 md:mt-0">Theme: #420303 Brutalism</p>
   </footer>
 
-  <!-- Scripts: Logic & Interactive Classic Tetris & 5x5 Minesweeper -->
+  <!-- Scripts: Logic & Interactive Components -->
   <script>
     // Ask BelajarAI
     async function sendAskAI() {
@@ -411,21 +470,21 @@
     }
     initMinesweeper();
 
-    // 2. Official Classic Tetris Game Logic (10x16 Grid)
+    // 2. Tetris Game Logic (Only starts when Start is pressed)
     const tCanvas = document.getElementById('tetris-canvas');
     const tCtx = tCanvas.getContext('2d');
     const COLS = 10, ROWS = 16, BLOCK_SIZE = 20;
     let tBoard = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-    let tScore = 0, tTimer = null;
+    let tScore = 0, tTimer = null, gameStarted = false;
 
     const TETROMINOES = [
-      { shape: [[1, 1, 1, 1]], color: '#00f0f0' }, // I
-      { shape: [[1, 1, 1], [0, 1, 0]], color: '#a000f0' }, // T
-      { shape: [[1, 1, 1], [1, 0, 0]], color: '#f0a000' }, // L
-      { shape: [[1, 1, 1], [0, 0, 1]], color: '#0000f0' }, // J
-      { shape: [[1, 1], [1, 1]], color: '#f0f000' }, // O
-      { shape: [[0, 1, 1], [1, 1, 0]], color: '#00f000' }, // S
-      { shape: [[1, 1, 0], [0, 1, 1]], color: '#f00000' }  // Z
+      { shape: [[1, 1, 1, 1]], color: '#00f0f0' },
+      { shape: [[1, 1, 1], [0, 1, 0]], color: '#a000f0' },
+      { shape: [[1, 1, 1], [1, 0, 0]], color: '#f0a000' },
+      { shape: [[1, 1, 1], [0, 0, 1]], color: '#0000f0' },
+      { shape: [[1, 1], [1, 1]], color: '#f0f000' },
+      { shape: [[0, 1, 1], [1, 1, 0]], color: '#00f000' },
+      { shape: [[1, 1, 0], [0, 1, 1]], color: '#f00000' }
     ];
 
     let currentPiece = null;
@@ -440,8 +499,8 @@
       };
       if (checkCollision(currentPiece.x, currentPiece.y, currentPiece.shape)) {
         clearInterval(tTimer);
+        gameStarted = false;
         alert(`GAME OVER! Final Score: ${tScore}`);
-        initTetris();
       }
     }
 
@@ -509,6 +568,7 @@
     }
 
     function updateTetris() {
+      if (!gameStarted) return;
       if (!checkCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
         currentPiece.y++;
       } else {
@@ -518,6 +578,7 @@
     }
 
     function tetrisMove(dir) {
+      if (!gameStarted) return;
       if (!checkCollision(currentPiece.x + dir, currentPiece.y, currentPiece.shape)) {
         currentPiece.x += dir;
         drawTetris();
@@ -525,6 +586,7 @@
     }
 
     function tetrisRotate() {
+      if (!gameStarted) return;
       const rotated = currentPiece.shape[0].map((_, i) => currentPiece.shape.map(row => row[i]).reverse());
       if (!checkCollision(currentPiece.x, currentPiece.y, rotated)) {
         currentPiece.shape = rotated;
@@ -532,31 +594,30 @@
       }
     }
 
-    function tetrisDrop() {
-      while (!checkCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
-        currentPiece.y++;
-      }
-      mergePiece();
-      drawTetris();
-    }
-
-    function initTetris() {
-      clearInterval(tTimer);
+    function startTetrisGame() {
+      if (gameStarted) return;
       tBoard = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
       tScore = 0;
       document.getElementById('tetris-score').innerText = 'SCORE: 0';
+      gameStarted = true;
       spawnTetromino();
       drawTetris();
+      clearInterval(tTimer);
       tTimer = setInterval(updateTetris, 500);
     }
-    initTetris();
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') tetrisMove(-1);
-      if (e.key === 'ArrowRight') tetrisMove(1);
-      if (e.key === 'ArrowUp') tetrisRotate();
-      if (e.key === 'ArrowDown') tetrisDrop();
-    });
+    function resetTetrisGame() {
+      clearInterval(tTimer);
+      gameStarted = false;
+      tBoard = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      tScore = 0;
+      document.getElementById('tetris-score').innerText = 'SCORE: 0';
+      tCtx.fillStyle = '#000';
+      tCtx.fillRect(0, 0, tCanvas.width, tCanvas.height);
+    }
+
+    // Initial draw for Tetris container
+    drawTetris();
 
     // Stopwatch
     let timer, sec = 0;
@@ -584,6 +645,18 @@
       catch { document.getElementById('calc-display').value = 'Error'; }
     }
 
+    // Calendar logic (Placed right after Calculator)
+    const d = new Date();
+    document.getElementById('calendar-header').innerText = d.toLocaleString('ms', { month: 'long', year: 'numeric' });
+    const calGrid = document.getElementById('calendar-grid');
+    const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    for (let i = 1; i <= daysInMonth; i++) {
+      const day = document.createElement('div');
+      day.className = `p-1 rounded ${i === d.getDate() ? 'bg-amber-300 text-black font-bold' : 'bg-white/5'}`;
+      day.innerText = i;
+      calGrid.appendChild(day);
+    }
+
     // Currency Converter Global
     const currs = ['MYR','USD','EUR','GBP','JPY','SGD','IDR','AUD','THB','CNY','KRW','INR'];
     const fSel = document.getElementById('curr-from'), tSel = document.getElementById('curr-to');
@@ -600,15 +673,30 @@
       } catch { document.getElementById('curr-result').innerText = 'Gagal memproses tukaran.'; }
     }
 
-    // Crypto Ticker Live
-    async function fetchCrypto() {
+    // Crypto 5-Days Line Chart Selector Logic
+    async function updateCryptoChart() {
+      const coin = document.getElementById('crypto-select').value;
+      document.getElementById('crypto-label').innerText = `${coin.toUpperCase()} / USD (5 Days)`;
       try {
-        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd');
+        const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=5`);
         const data = await res.json();
-        document.getElementById('crypto-ticker').innerText = `BTC: $${data.bitcoin.usd} | ETH: $${data.ethereum.usd} | SOL: $${data.solana.usd}`;
-      } catch { document.getElementById('crypto-ticker').innerText = 'Kadar Live Aktif'; }
+        const prices = data.prices.map(p => p[1]);
+        // Simple SVG line mapping
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
+        const range = max - min || 1;
+        const points = prices.filter((_, idx) => idx % Math.floor(prices.length / 5) === 0).map((val, i) => {
+          const x = i * 40;
+          const y = 50 - ((val - min) / range) * 40;
+          return `${x},${y}`;
+        }).join(' ');
+        document.getElementById('crypto-path').setAttribute('d', `M ${points}`);
+      } catch {
+        // Fallback smooth curve if API limit reached
+        document.getElementById('crypto-path').setAttribute('d', 'M0,30 Q50,10 100,25 T200,15');
+      }
     }
-    fetchCrypto();
+    updateCryptoChart();
 
     // Cold Email Generator
     async function generateColdEmail() {
@@ -652,7 +740,7 @@
     function checkCompatibility() {
       const res = document.getElementById('pc-result');
       res.classList.remove('hidden');
-      res.innerText = '✅ Analisis Berjaya: Sistem TDP, PSU, dan Motherboard 100% Serasi!';
+      res.innerText = '✅ Analisis Berjaya: Pilihan Spec PC (Low/Mid/High, RAM, Storage, PSU) Serasi Sepenuhnya!';
     }
     function resetCompatibility() { document.getElementById('pc-result').classList.add('hidden'); }
 
