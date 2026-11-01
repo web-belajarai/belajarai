@@ -189,7 +189,7 @@
         <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
           <h3 class="font-bold text-sm text-amber-200">💬 AI Character Group Chat </h3>
           <div id="group-chat-box" class="p-2 bg-black border border-white/20 rounded-lg text-[10px] h-32 overflow-y-auto space-y-2">
-            <span class="text-gray-400 italic">Tekan Start Chat untuk mulakan interaksi lambat...</span>
+            <span class="text-gray-400 italic">Tekan Start Chat untuk mulakan interaksi...</span>
           </div>
           <div class="flex gap-2">
             <button onclick="startGroupChatSafe()" class="flex-grow py-2 brutalist-btn bg-white text-black font-bold text-xs rounded-lg">Start Chat</button>
@@ -200,26 +200,26 @@
 
       <!-- Cookbook -->
       <div class="p-4 bg-black/40 border-2 border-black rounded-xl space-y-3">
-        <h3 class="font-bold text-sm text-amber-200">🛠️ PC Cookbook</h3>
+        <h3 class="font-bold text-sm text-amber-200">🛠️ Cookbook</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <div>
             <label class="block mb-1 text-[10px] text-amber-200">CPU</label>
             <select id="pc-cpu" class="w-full p-2 brutalist-input rounded bg-black">
-              <option value="INTEL_LOW">Intel Core i3-12100F (LGA1700)</option>
-              <option value="INTEL_MID">Intel Core i5-13400 (LGA1700)</option>
-              <option value="INTEL_HIGH">Intel Core i5-13600K (LGA1700)</option>
-              <option value="AMD_MID">AMD Ryzen 7 7800X3D (AM5)</option>
-              <option value="AMD_HIGH">AMD Ryzen 9 7950X (AM5)</option>
+              <option value="INTEL_LOW">Intel Core i3-12100F</option>
+              <option value="INTEL_MID">Intel Core i5-13400</option>
+              <option value="INTEL_HIGH">Intel Core i5-13600K</option>
+              <option value="AMD_MID">AMD Ryzen 7 7800X3D</option>
+              <option value="AMD_HIGH">AMD Ryzen 9 7950X</option>
             </select>
           </div>
           <div>
             <label class="block mb-1 text-[10px] text-amber-200">GPU</label>
             <select id="pc-gpu" class="w-full p-2 brutalist-input rounded bg-black">
               <option value="GPU_INT">Intel UHD 730 (Integrated)</option>
-              <option value="GPU_LOW">NVIDIA GTX 1650 4GB (Low)</option>
-              <option value="GPU_MID">NVIDIA RTX 4060 8GB (Mid)</option>
-              <option value="GPU_HIGH">NVIDIA RTX 4070 Ti 12GB (High)</option>
-              <option value="GPU_EXTREME">NVIDIA RTX 4090 24GB (Extreme)</option>
+              <option value="GPU_LOW">NVIDIA GTX 1650 4GB</option>
+              <option value="GPU_MID">NVIDIA RTX 4060 8GB</option>
+              <option value="GPU_HIGH">NVIDIA RTX 4070 Ti 12GB</option>
+              <option value="GPU_EXTREME">NVIDIA RTX 4090 24GB</option>
             </select>
           </div>
           <div>
@@ -245,17 +245,17 @@
           <div>
             <label class="block mb-1 text-[10px] text-amber-200">Motherboard</label>
             <select id="pc-mb" class="w-full p-2 brutalist-input rounded bg-black">
-              <option value="MB_H610">H610M Micro-ATX (Intel LGA1700 DDR4)</option>
-              <option value="MB_B760">B760 Tomahawk WiFi (Intel LGA1700 DDR5)</option>
-              <option value="MB_Z790">ASUS Z790 (Intel LGA1700 DDR5)</option>
-              <option value="MB_B650">B650M Gaming (AMD AM5 DDR5)</option>
-              <option value="MB_X670">X670E AORUS (AMD AM5 DDR5)</option>
+              <option value="MB_H610">H610M Micro-ATX</option>
+              <option value="MB_B760">B760 Tomahawk</option>
+              <option value="MB_Z790">ASUS Z790</option>
+              <option value="MB_B650">B650M Gaming</option>
+              <option value="MB_X670">X670E AORUS</option>
             </select>
           </div>
           <div>
             <label class="block mb-1 text-[10px] text-amber-200">PSU Power</label>
             <select id="pc-psu" class="w-full p-2 brutalist-input rounded bg-black">
-              <option value="400">400W Standard Non-Modular</option>
+              <option value="400">400W Standard</option>
               <option value="550">550W 80+ Bronze</option>
               <option value="650">650W 80+ Gold</option>
               <option value="850">850W 80+ Gold</option>
@@ -267,7 +267,7 @@
           <label class="block mb-1 text-[10px] text-amber-200">OS</label>
           <select id="pc-os" class="w-full p-2 brutalist-input rounded bg-black">
             <option>Windows 10 Home</option>
-            <option>Windows 11 Pro 64-bit</option>
+            <option>Windows 11 Pro</option>
             <option>Ubuntu Linux 24.04 LTS</option>
             <option>Fedora Workstation</option>
             <option>Arch Linux Custom Build</option>
@@ -283,7 +283,7 @@
 
     <!-- 3. Ask BelajarAI -->
     <section id="ask-ai" class="brutalist-container p-5 md:p-8 rounded-3xl space-y-4">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Ask BelajarAI</h2>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold uppercase tracking-wider text-amber-300 border-b-2 border-black pb-2">Ask Belajar AI</h2>
       <div id="ai-chat-box" class="h-48 overflow-y-auto space-y-3 p-3 bg-black/50 border-2 border-black rounded-xl text-xs">
         <div class="text-amber-200 italic">Sistem LLM terbuka sedia menjawab pertanyaan anda tanpa log masuk...</div>
       </div>
@@ -333,7 +333,7 @@
     <section class="brutalist-container p-5 md:p-8 rounded-3xl text-center space-y-3">
       <h2 class="font-heading text-2xl font-bold uppercase text-amber-300">Music Playlist</h2>
       <p class="text-xs text-gray-200 max-w-xl mx-auto leading-relaxed">
-        "I built BelajarAI while listening to these tracks. This is an unlisted, exclusive playlist for those who want to enter flow state - Arrick, Founder BelajarAI"
+        "I built BelajarAI while listening to these tracks. This is an unlisted, exclusive playlist for those who want to enter flow state" - Founder
       </p>
       <div class="pt-2">
         <a href="https://youtube.com/playlist?list=PLetxQaF4n6Wg&si=Dlqq7B-DsbquYopI" target="_blank" class="brutalist-btn inline-flex items-center space-x-2 px-5 py-3 bg-white text-black font-bold text-xs rounded-xl shadow">
@@ -346,7 +346,7 @@
     <!-- 6. Create Your Website Today -->
     <section class="brutalist-container p-6 rounded-3xl text-center space-y-3">
       <h2 class="font-heading text-2xl font-bold uppercase text-amber-300">Create Your Website Today</h2>
-      <p class="text-xs text-gray-300">Bangunkan platform web masa depan anda sekarang.</p>
+      <p class="text-xs text-gray-300">Bangunkan platform web anda sekarang.</p>
       <div>
         <a href="https://readdy.ai" target="_blank" class="brutalist-btn inline-block px-6 py-3 bg-amber-300 text-black font-bold text-xs rounded-xl">
           Create Your Website
@@ -401,7 +401,7 @@
     <!-- 8. Rate Your Experience -->
     <section class="brutalist-container p-6 rounded-3xl text-center space-y-3">
       <h2 class="font-heading text-2xl font-bold uppercase text-amber-300">Rate Your Experience</h2>
-      <p class="text-xs text-gray-300">Nilaikan prestasi kemas kini baru ini.</p>
+      <p class="text-xs text-gray-300">Nilaikan prestasi BelajarAI</p>
       <div id="star-rating" class="flex justify-center space-x-2 text-2xl cursor-pointer">
         <span onclick="setRating(1)">★</span>
         <span onclick="setRating(2)">★</span>
@@ -428,7 +428,7 @@
 
   <footer class="w-full max-w-4xl mx-auto brutalist-container mt-12 px-4 py-4 text-center text-xs text-gray-400 rounded-2xl flex flex-col md:flex-row justify-between items-center">
     <p>© 2026 BelajarAI</p>
-    <p class="font-mono text-[10px] text-amber-300 mt-1 md:mt-0">Theme: #420303 Brutalism</p>
+    <p class="font-mono text-[10px] text-amber-300 mt-1 md:mt-0">Theme: #420303</p>
   </footer>
 
   <!-- Scripts: Fixed Logics -->
@@ -690,7 +690,7 @@
     // Cryptocurrency Price
     async function updateCryptoChart() {
       const coin = document.getElementById('crypto-select').value;
-      document.getElementById('crypto-label').innerText = `${coin.toUpperCase()} / USD (5 Days)`;
+      document.getElementById('crypto-label').innerText = `${coin.toUpperCase()} / USD`;
       
       try {
         const priceRes = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`);
